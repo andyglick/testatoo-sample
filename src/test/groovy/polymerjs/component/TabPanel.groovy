@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package polymerjs
+package polymerjs.component
 
-import bootstrap.property.Tabs
+import bootstrap.component.property.Tabs
 import org.testatoo.core.component.Component
 import org.testatoo.core.property.Size
 import org.testatoo.core.property.Title

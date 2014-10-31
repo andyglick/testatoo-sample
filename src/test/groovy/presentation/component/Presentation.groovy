@@ -13,27 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package presentation.property
+package presentation.component
 
-import org.testatoo.core.component.Component
-import org.testatoo.core.property.Property
-import org.testatoo.core.property.matcher.ContainingMatcher
-import org.testatoo.core.property.matcher.EqualsToMatcher
-
+import org.testatoo.core.component.*
+import org.testatoo.core.property.*
+import presentation.component.property.Author
+import presentation.component.property.Company
+import presentation.component.property.Slides
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
-class Author extends Property {
+class Presentation extends Component {
 
-    Author() {
-        evaluator { Component c -> c.evaluator.getString("\$('[data-role=author]').text()") }
+    Presentation() {
+        support Title, {
+            evaluator.getString("\$('#${id}').find('h1').text()")
+        }
+        support Size, {
+            Component c -> Integer.valueOf(c.evaluator.getString("\$('#${id}').find('section').length"))
+        }
+        support Slides, Author, Company
     }
-
-    @Delegate
-    private EqualsToMatcher.Matchers eq = EqualsToMatcher.matchers(this)
-
-    @Delegate
-    private ContainingMatcher.Matchers contains = ContainingMatcher.matchers(this)
-
 }

@@ -13,21 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package starter
+package starter.component
 
-import org.testatoo.core.Testatoo
-import org.testatoo.core.component.Button
-import org.testatoo.core.component.input.TextField
+import org.testatoo.core.component.Component
+import org.testatoo.core.component.list.Item
 import org.testatoo.core.component.list.ListView
-import starter.component.GoogleListView
+import org.testatoo.core.property.Items
+import org.testatoo.core.property.Size
 
 /**
  * Created by david on 07/05/14.
  */
-class Factory extends Testatoo {
-    TextField searchField = $('#gbqfq') as TextField
-    Button searchButton = $('#gbqfb') as Button
-    ListView resultList = $('#rso') as ListView
+class GoogleListView extends ListView {
 
-    GoogleListView googleResultList = $('#rso') as GoogleListView
+    GoogleListView() {
+        support Size, {
+            Component c -> Integer.valueOf(c.evaluator.getString("\$('#${id}').find('li').length"))
+        }
+        support Items, {
+            Component c -> c.evaluator.getMetaInfo("\$('#${id}').find('li')").collect { it as Item }
+        }
+    }
+
+    List<GoogleItem> getItems() {
+        this.evaluator.getMetaInfo("\$('#${id}').find('li')").collect { it as GoogleItem }
+    }
 }

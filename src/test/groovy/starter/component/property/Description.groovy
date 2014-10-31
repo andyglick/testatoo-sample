@@ -13,22 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package starter
+package starter.component.property
 
 import org.testatoo.core.component.Component
-import org.testatoo.core.property.Title
-import starter.property.Description
-import starter.property.Url
+import org.testatoo.core.property.Property
+import org.testatoo.core.property.matcher.ContainingMatcher
+import org.testatoo.core.property.matcher.EqualsToMatcher
 
 /**
  * Created by david on 07/05/14.
  */
-class GoogleItem extends Component {
+class Description extends Property {
 
-    GoogleItem() {
-        support Title, {
-            Component c -> c.evaluator.getString("\$('#${id} h3').text()")
-        }
-        support Url, Description
+    Description() {
+        evaluator { Component c -> c.evaluator.getString("\$('#${c.id} span.st').text()") }
     }
+
+    @Delegate
+    private EqualsToMatcher.Matchers eq = EqualsToMatcher.matchers(this)
+
+    @Delegate
+    private ContainingMatcher.Matchers contains = ContainingMatcher.matchers(this)
+
 }

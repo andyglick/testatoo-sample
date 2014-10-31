@@ -13,48 +13,50 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package bootstrap
+package angularjs.component
 
 import org.testatoo.core.component.Component
-import org.testatoo.core.component.Panel
-import org.testatoo.core.property.*
+import org.testatoo.core.component.Link
+import org.testatoo.core.property.Items
+import org.testatoo.core.property.Size
+import org.testatoo.core.property.Title
 import org.testatoo.core.state.Selected
 import org.testatoo.core.state.UnSelected
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
-class Accordion extends Component {
+class NavigationMenu extends Component {
 
-    Accordion() {
+    NavigationMenu() {
         support Size, {
-            Component c -> Integer.valueOf(c.evaluator.getString("\$('#${id} .panel-heading a').length"))
+            Component c -> Integer.valueOf(c.evaluator.getString("\$('#${id}').find('a').length"))
         }
+
         support Items, {
-            Component c -> c.evaluator.getMetaInfo("\$('#${id} .panel-heading a')").collect { it as Item }
+            Component c -> c.evaluator.getMetaInfo("\$('#${id}').find('a')").collect { it as Item }
         }
     }
 
     List<Item> getItems() {
-        this.evaluator.getMetaInfo("\$('#${id} .panel-heading a')").collect { it as Item }
+        this.evaluator.getMetaInfo("\$('#${id}').find('a')").collect { it as Item }
     }
 
-    private class Item extends Component {
+    private class Item extends Link {
 
         Item() {
             support Title, {
                 Component c -> c.evaluator.getString("\$('#${id}').text()").trim()
             }
             support Selected, {
-                Component c ->  Boolean.valueOf(c.evaluator.getString("\$('#${panel.id}').hasClass('in')"))
+                Component c ->  Boolean.valueOf(c.evaluator.getString("\$('#${id}').attr('class') === \$('#${id}').closest('nav').attr('class')"))
             }
             support UnSelected, {
-                Component c ->  !Boolean.valueOf(c.evaluator.getString("\$('#${panel.id}').hasClass('in')"))
+                Component c ->  Boolean.valueOf(c.evaluator.getString("\$('#${id}').attr('class') !== \$('#${id}').closest('nav').attr('class')"))
             }
         }
-
-        Panel getPanel() {
-            return $('#' + this.evaluator.getString("\$('#${id}').attr('href').substring(1)")) as Panel
-        }
     }
+
 }
+
+//$('.home').attr('class') === $('.home').parent().attr('class')

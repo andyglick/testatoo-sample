@@ -24,13 +24,13 @@ import org.junit.runners.JUnit4
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.testatoo.core.Testatoo
 import org.testatoo.core.evaluator.webdriver.WebDriverEvaluator
+import starter.component.GoogleItem
 
 import static org.testatoo.core.Testatoo.*
 import static org.testatoo.core.input.Mouse.*
-import static org.testatoo.core.property.Properties.items
 import static org.testatoo.core.property.Properties.title
 import static org.testatoo.core.state.States.*
-import static starter.property.Properties.*
+import static starter.component.property.Properties.*
 
 /**
  * @author davenante

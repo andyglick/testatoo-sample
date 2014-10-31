@@ -13,23 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package presentation.property
+package presentation.component.property
 
 import org.testatoo.core.component.Component
-import org.testatoo.core.component.Section
 import org.testatoo.core.property.Property
-import org.testatoo.core.property.matcher.EqualsToListMatcher
+import org.testatoo.core.property.matcher.ContainingMatcher
+import org.testatoo.core.property.matcher.EqualsToMatcher
+
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
-class Slides extends Property {
+class Author extends Property {
 
-    Slides() {
-        evaluator { Component c -> c.evaluator.getMetaInfo("\$('#${id}').find('section')").collect { it as Section } }
+    Author() {
+        evaluator { Component c -> c.evaluator.getString("\$('[data-role=author]').text()") }
     }
 
     @Delegate
-    private EqualsToListMatcher.Matchers eq = EqualsToListMatcher.matchers(this)
+    private EqualsToMatcher.Matchers eq = EqualsToMatcher.matchers(this)
+
+    @Delegate
+    private ContainingMatcher.Matchers contains = ContainingMatcher.matchers(this)
 
 }

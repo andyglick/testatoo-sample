@@ -24,6 +24,7 @@ import org.junit.runners.JUnit4
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.testatoo.core.Testatoo
 import org.testatoo.core.evaluator.webdriver.WebDriverEvaluator
+import polymerjs.component.TabPanel
 
 import static org.testatoo.core.Testatoo.*
 import static org.testatoo.core.input.Mouse.clickOn

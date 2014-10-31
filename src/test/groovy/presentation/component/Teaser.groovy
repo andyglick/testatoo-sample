@@ -13,26 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package starter.property
+package presentation.component
 
 import org.testatoo.core.component.Component
-import org.testatoo.core.property.Property
-import org.testatoo.core.property.matcher.ContainingMatcher
-import org.testatoo.core.property.matcher.EqualsToMatcher
+import org.testatoo.core.property.Text
 
 /**
- * Created by david on 07/05/14.
+ * @author David Avenante (d.avenante@gmail.com)
  */
-class Description extends Property {
+class Teaser extends Component {
 
-    Description() {
-        evaluator { Component c -> c.evaluator.getString("\$('#${c.id} span.st').text()") }
+    Teaser() {
+        support Text, {
+            Component c -> c.evaluator.getString("\$('#${id}').text()")
+        }
     }
-
-    @Delegate
-    private EqualsToMatcher.Matchers eq = EqualsToMatcher.matchers(this)
-
-    @Delegate
-    private ContainingMatcher.Matchers contains = ContainingMatcher.matchers(this)
 
 }

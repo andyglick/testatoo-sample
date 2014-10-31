@@ -13,26 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package starter.property
+package bootstrap.component.property
 
-import org.testatoo.core.component.Component
 import org.testatoo.core.property.Property
-import org.testatoo.core.property.matcher.ContainingMatcher
-import org.testatoo.core.property.matcher.EqualsToMatcher
+import org.testatoo.core.property.matcher.EqualsToListMatcher
 
 /**
- * Created by david on 07/05/14.
+ * @author David Avenante (d.avenante@gmail.com)
  */
-class Url extends Property {
-
-    Url() {
-        evaluator { Component c -> c.evaluator.getString("\$('#${c.id} cite:first').text()") }
-    }
+class Tabs extends Property {
 
     @Delegate
-    private EqualsToMatcher.Matchers eq = EqualsToMatcher.matchers(this)
-
-    @Delegate
-    private ContainingMatcher.Matchers contains = ContainingMatcher.matchers(this)
+    private EqualsToListMatcher.Matchers eq = EqualsToListMatcher.matchers(this)
 
 }

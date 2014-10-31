@@ -28,6 +28,13 @@
     <name>Testatoo :: Sample</name>
     <inceptionYear>2014</inceptionYear>
 
+    <scm>
+        <connection>scm:git:git@github.com:Ovea/testatoo-sample.git</connection>
+        <developerConnection>scm:git:git@github.com:Ovea/testatoo-sample.git</developerConnection>
+        <url>http://github.com/Ovea/testatoo-sample</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <properties>
         <testatoo.version>2.0.b1-SNAPSHOT</testatoo.version>
         <jdk.version>1.7</jdk.version>
@@ -36,6 +43,39 @@
         <jetty.version>9.2.3.v20140905</jetty.version>
         <jetty.daemon>true</jetty.daemon>
     </properties>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>altus34</id>
+            <name>David Avenante</name>
+            <email>d.avenante@ovea.com</email>
+            <organization>Ovea</organization>
+            <organizationUrl>http://www.ovea.com/</organizationUrl>
+            <timezone>-5</timezone>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>mathieucarbou</id>
+            <name>Mathieu Carbou</name>
+            <email>m.carbou@ovea.com</email>
+            <organization>Ovea</organization>
+            <organizationUrl>http://www.ovea.com/</organizationUrl>
+            <timezone>-5</timezone>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <build>
         <plugins>

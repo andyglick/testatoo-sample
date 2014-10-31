@@ -19,6 +19,10 @@ import org.testatoo.core.Testatoo
 import org.testatoo.core.component.Heading
 import org.testatoo.core.component.Image
 import org.testatoo.core.component.list.ListView
+import presentation.component.Conclusion
+import presentation.component.Presentation
+import presentation.component.Teaser
+import presentation.component.TextMessage
 
 /**
  * @author David Avenante (d.avenante@gmail.com)

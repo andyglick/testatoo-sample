@@ -15,6 +15,9 @@
  */
 package bootstrap
 
+import bootstrap.component.Accordion
+import bootstrap.component.ProgressBar
+import bootstrap.component.TabPanel
 import org.junit.*
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4

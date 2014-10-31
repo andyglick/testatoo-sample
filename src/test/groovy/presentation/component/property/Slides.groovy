@@ -13,18 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package presentation.property
+package presentation.component.property
 
-import org.testatoo.core.property.matcher.PropertyMatcher
+import org.testatoo.core.component.Component
+import org.testatoo.core.component.Section
+import org.testatoo.core.property.Property
+import org.testatoo.core.property.matcher.EqualsToListMatcher
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
-class Properties {
+class Slides extends Property {
 
-    static final Author author = new Author()
-    static final PropertyMatcher author(String expected) { author.equalsTo(expected) }
+    Slides() {
+        evaluator { Component c -> c.evaluator.getMetaInfo("\$('#${id}').find('section')").collect { it as Section } }
+    }
 
-    static final Company company = new Company()
-    static final PropertyMatcher company(String expected) { company.equalsTo(expected) }
+    @Delegate
+    private EqualsToListMatcher.Matchers eq = EqualsToListMatcher.matchers(this)
+
 }

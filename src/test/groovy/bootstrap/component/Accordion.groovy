@@ -13,41 +13,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package bootstrap
+package bootstrap.component
 
-import bootstrap.property.Tabs
-import org.testatoo.core.component.*
+import org.testatoo.core.component.Component
+import org.testatoo.core.component.Panel
 import org.testatoo.core.property.*
-import org.testatoo.core.state.*
+import org.testatoo.core.state.Selected
+import org.testatoo.core.state.UnSelected
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
-class TabPanel extends Component {
+class Accordion extends Component {
 
-    TabPanel() {
+    Accordion() {
         support Size, {
-            Component c -> Integer.valueOf(c.evaluator.getString("\$('#${id}').find('a').length"))
+            Component c -> Integer.valueOf(c.evaluator.getString("\$('#${id} .panel-heading a').length"))
         }
-        support Tabs, {
-            Component c -> c.evaluator.getMetaInfo("\$('#${id}').find('a')").collect { it as Tab }
+        support Items, {
+            Component c -> c.evaluator.getMetaInfo("\$('#${id} .panel-heading a')").collect { it as Item }
         }
     }
 
-    List<Tab> getTabs() {
-        this.evaluator.getMetaInfo("\$('#${id}').find('a')").collect { it as Tab }
+    List<Item> getItems() {
+        this.evaluator.getMetaInfo("\$('#${id} .panel-heading a')").collect { it as Item }
     }
 
-    private class Tab extends Component {
-        Tab() {
+    private class Item extends Component {
+
+        Item() {
             support Title, {
-                Component c -> c.evaluator.getString("\$('#${id}').text()")
+                Component c -> c.evaluator.getString("\$('#${id}').text()").trim()
             }
             support Selected, {
-                Component c ->  Boolean.valueOf(c.evaluator.getString("\$('#${id}').closest('li').hasClass('active')"))
+                Component c ->  Boolean.valueOf(c.evaluator.getString("\$('#${panel.id}').hasClass('in')"))
             }
             support UnSelected, {
-                Component c ->  !Boolean.valueOf(c.evaluator.getString("\$('#${id}').closest('li').hasClass('active')"))
+                Component c ->  !Boolean.valueOf(c.evaluator.getString("\$('#${panel.id}').hasClass('in')"))
             }
         }
 

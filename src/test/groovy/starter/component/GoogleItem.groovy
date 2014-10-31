@@ -13,25 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package presentation.property
+package starter.component
 
 import org.testatoo.core.component.Component
-import org.testatoo.core.property.Property
-import org.testatoo.core.property.matcher.ContainingMatcher
-import org.testatoo.core.property.matcher.EqualsToMatcher
+import org.testatoo.core.property.Title
+import starter.component.property.Description
+import starter.component.property.Url
 
 /**
- * @author David Avenante (d.avenante@gmail.com)
+ * Created by david on 07/05/14.
  */
-class Company extends Property {
+class GoogleItem extends Component {
 
-    Company() {
-        evaluator { Component c -> c.evaluator.getString("\$('[data-role=company]').text()") }
+    GoogleItem() {
+        support Title, {
+            Component c -> c.evaluator.getString("\$('#${id} h3').text()")
+        }
+        support Url, Description
     }
-
-    @Delegate
-    private EqualsToMatcher.Matchers eq = EqualsToMatcher.matchers(this)
-
-    @Delegate
-    private ContainingMatcher.Matchers contains = ContainingMatcher.matchers(this)
 }

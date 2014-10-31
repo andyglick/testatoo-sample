@@ -13,29 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package starter
+package bootstrap.component
 
 import org.testatoo.core.component.Component
-import org.testatoo.core.component.list.Item
-import org.testatoo.core.component.list.ListView
-import org.testatoo.core.property.Items
-import org.testatoo.core.property.Size
+import org.testatoo.core.property.Value
 
 /**
- * Created by david on 07/05/14.
+ * @author David Avenante (d.avenante@gmail.com)
  */
-class GoogleListView extends ListView {
+class ProgressBar extends Component {
 
-    GoogleListView() {
-        support Size, {
-            Component c -> Integer.valueOf(c.evaluator.getString("\$('#${id}').find('li').length"))
+    public ProgressBar() {
+        support Value, {
+            Component c -> c.evaluator.getString("document.getElementById('${c.id}').style.width")
         }
-        support Items, {
-            Component c -> c.evaluator.getMetaInfo("\$('#${id}').find('li')").collect { it as Item }
-        }
-    }
-
-    List<GoogleItem> getItems() {
-        this.evaluator.getMetaInfo("\$('#${id}').find('li')").collect { it as GoogleItem }
     }
 }

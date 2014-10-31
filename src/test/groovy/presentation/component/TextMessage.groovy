@@ -13,17 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package starter.property
+package presentation.component
 
-import org.testatoo.core.property.matcher.PropertyMatcher
+import org.testatoo.core.component.Component
+import org.testatoo.core.property.Text
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
-class Properties {
-
-    static final Url url = new Url()
-    static final PropertyMatcher url(String expected) { url.equalsTo(expected) }
-
-    static final Description description = new Description()
+class TextMessage extends Component {
+    TextMessage() {
+        support Text, {
+            Component c -> c.evaluator.getString("\$('#${id}').text()")
+        }
+    }
 }

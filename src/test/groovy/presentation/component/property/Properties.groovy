@@ -13,19 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package bootstrap
+package presentation.component.property
 
-import org.testatoo.core.component.Component
-import org.testatoo.core.property.Value
+import org.testatoo.core.property.matcher.PropertyMatcher
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
-class ProgressBar extends Component {
+class Properties {
 
-    public ProgressBar() {
-        support Value, {
-            Component c -> c.evaluator.getString("document.getElementById('${c.id}').style.width")
-        }
-    }
+    static final Author author = new Author()
+    static final PropertyMatcher author(String expected) { author.equalsTo(expected) }
+
+    static final Company company = new Company()
+    static final PropertyMatcher company(String expected) { company.equalsTo(expected) }
 }
