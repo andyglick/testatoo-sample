@@ -163,7 +163,7 @@ class PresentationTest {
     public void the_specificity_of_functional_test() {
         open 'http://localhost:8080/presentation/index.html#15.0'
 
-        functional_tests_specificity_title.should { be visible and have(title('Functional tests have some specificities'))}
+        functional_tests_specificity_title.should { be visible and have(text('Functional tests have some specificities'))}
 
         open 'http://localhost:8080/presentation/index.html#16.0'
         functional_tests_specificity_list.should { have 4.items }
