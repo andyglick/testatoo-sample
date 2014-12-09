@@ -57,7 +57,7 @@ class LoginPageTest {
 
 
         login_panel.should {
-            contains(
+            contain(
                 email_field,
                 password_field,
                 login_button

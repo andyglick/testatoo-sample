@@ -39,6 +39,7 @@ class AngularJSTest {
     @BeforeClass
     public static void setup() {
         Testatoo.evaluator =  new WebDriverEvaluator(new FirefoxDriver())
+        evaluator.registerScripts(this.getClass().getResourceAsStream('/angular/custom.js').text)
         open 'http://localhost:8080/angularjs/index.html'
     }
 
