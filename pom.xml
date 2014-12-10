@@ -36,7 +36,7 @@
     </scm>
 
     <properties>
-        <testatoo.version>2.0.b1-SNAPSHOT</testatoo.version>
+        <testatoo.version>2.0.b1</testatoo.version>
         <jdk.version>1.7</jdk.version>
         <groovy.version>2.3.6</groovy.version>
         <selenium.version>2.44.0</selenium.version>
