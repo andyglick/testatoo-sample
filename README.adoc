@@ -35,7 +35,7 @@ Follow the instructions http://maven.apache.org/download.cgi#Installation["Maven
 === Installation Steps
 
     $ cd /wherever
-    $ git clone https://github.com/Ovea/testatoo
+    $ git clone https://github.com/Ovea/testatoo-sample
     $ cd testatoo
 
 In your original Terminal
