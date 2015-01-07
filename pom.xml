@@ -23,7 +23,7 @@
 
     <groupId>org.testatoo</groupId>
     <artifactId>testatoo-sample</artifactId>
-    <version>2.0.b1-SNAPSHOT</version>
+    <version>2.0.b2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Testatoo :: Sample</name>
     <inceptionYear>2014</inceptionYear>
@@ -36,7 +36,7 @@
     </scm>
 
     <properties>
-        <testatoo.version>2.0.b1</testatoo.version>
+        <testatoo.version>2.0.b2</testatoo.version>
         <jdk.version>1.7</jdk.version>
         <groovy.version>2.3.6</groovy.version>
         <selenium.version>2.44.0</selenium.version>
@@ -57,17 +57,6 @@
             <id>altus34</id>
             <name>David Avenante</name>
             <email>d.avenante@ovea.com</email>
-            <organization>Ovea</organization>
-            <organizationUrl>http://www.ovea.com/</organizationUrl>
-            <timezone>-5</timezone>
-            <roles>
-                <role>developer</role>
-            </roles>
-        </developer>
-        <developer>
-            <id>mathieucarbou</id>
-            <name>Mathieu Carbou</name>
-            <email>m.carbou@ovea.com</email>
             <organization>Ovea</organization>
             <organizationUrl>http://www.ovea.com/</organizationUrl>
             <timezone>-5</timezone>

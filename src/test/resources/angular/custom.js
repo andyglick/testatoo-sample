@@ -15,12 +15,17 @@
  */
 (function (w) {
 
-    w.testatoo.options = {
-        customType: function(el) {
-            if (el.is('nav'))
-                return 'NavigationMenu';
-            return undefined;
+    w.testatoo.registerCartridge(
+        {
+            name: 'angular',
+            type: function(el) {
+                if (el.is('nav'))
+                    return 'NavigationMenu';
+                return undefined;
+            },
+            states: {},
+            properties: {}
         }
-    };
+    );
 
 }(window));

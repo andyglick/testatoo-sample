@@ -15,18 +15,23 @@
  */
 (function (w) {
 
-    w.testatoo.options = {
-        customType: function(el) {
-            if (el.data('role') == 'slides')
-                return 'Presentation';
-            if (el.attr('data-type') == 'conclusion')
-                return 'Conclusion';
-            if (el.attr('data-type') == 'teaser')
-                return 'Teaser';
-            if (el.attr('data-type') == 'text-message')
-                return 'TextMessage';
-            return undefined;
+    w.testatoo.registerCartridge(
+        {
+            name: 'presentation',
+            type: function(el) {
+                if (el.data('role') == 'slides')
+                    return 'Presentation';
+                if (el.attr('data-type') == 'conclusion')
+                    return 'Conclusion';
+                if (el.attr('data-type') == 'teaser')
+                    return 'Teaser';
+                if (el.attr('data-type') == 'text-message')
+                    return 'TextMessage';
+                return undefined;
+            },
+            states: {},
+            properties: {}
         }
-    };
+    );
 
 }(window));

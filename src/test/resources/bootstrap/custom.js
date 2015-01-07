@@ -15,20 +15,25 @@
  */
 (function (w) {
 
-    w.testatoo.options = {
-        customType: function(el) {
-            if (el.attr('role') == 'progressbar')
-                return 'ProgressBar';
-            if (el.hasClass('nav-tabs'))
-                return 'TabPanel';
-            if (el.is('a') && el.closest('ul').hasClass('nav-tabs'))
-                return 'Tab';
-            if (el.hasClass('panel-group'))
-                return 'Accordion';
-            if (el.is('a') && el.closest('div').hasClass('panel-heading'))
-                return 'Item';
-            return undefined;
+    w.testatoo.registerCartridge(
+        {
+            name: 'bootstrap',
+            type: function(el) {
+                if (el.attr('role') == 'progressbar')
+                    return 'ProgressBar';
+                if (el.hasClass('nav-tabs'))
+                    return 'TabPanel';
+                if (el.is('a') && el.closest('ul').hasClass('nav-tabs'))
+                    return 'Tab';
+                if (el.hasClass('panel-group'))
+                    return 'Accordion';
+                if (el.is('a') && el.closest('div').hasClass('panel-heading'))
+                    return 'Item';
+                return undefined;
+            },
+            states: {},
+            properties: {}
         }
-    };
+    );
 
 }(window));

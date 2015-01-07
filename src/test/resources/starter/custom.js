@@ -15,12 +15,17 @@
  */
 (function (w) {
 
-    w.testatoo.options = {
-        customType: function (el) {
-            if (el.is('li') && el.hasClass('g'))
-                return 'GoogleItem';
-            return undefined;
+    w.testatoo.registerCartridge(
+        {
+            name: 'starter',
+            type: function(el) {
+                if (el.is('li') && el.hasClass('g'))
+                    return 'GoogleItem';
+                return undefined;
+            },
+            states: {},
+            properties: {}
         }
-    };
+    );
 
 }(window));

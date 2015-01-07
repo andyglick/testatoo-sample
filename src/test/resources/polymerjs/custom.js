@@ -15,14 +15,19 @@
  */
 (function (w) {
 
-    w.testatoo.options = {
-        customType: function(el) {
-            if (el.attr('role') == 'tablist')
-                return 'TabPanel';
-            if (el.is('paper-tab'))
-                return 'Tab';
-            return undefined;
+    w.testatoo.registerCartridge(
+        {
+            name: 'polymerjs',
+            type: function(el) {
+                if (el.attr('role') == 'tablist')
+                    return 'TabPanel';
+                if (el.is('paper-tab'))
+                    return 'Tab';
+                return undefined;
+            },
+            states: {},
+            properties: {}
         }
-    };
+    );
 
 }(window));
