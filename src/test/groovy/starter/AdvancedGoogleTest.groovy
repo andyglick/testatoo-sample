@@ -46,7 +46,7 @@ class AdvancedGoogleTest {
     public static void setup() {
         Testatoo.evaluator = new WebDriverEvaluator(new FirefoxDriver())
         evaluator.registerScripts(this.getClass().getResourceAsStream('/starter/custom.js').text)
-        open 'http://www.google.com'
+        open 'http://www.google.ca'
         factory = new Factory()
     }
 

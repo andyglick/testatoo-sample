@@ -26,7 +26,7 @@ import starter.component.GoogleListView
  */
 class Factory extends Testatoo {
     TextField searchField = $('#gbqfq') as TextField
-    Button searchButton = $('#gbqfb') as Button
+    Button searchButton = $('#gbqfba') as Button
     ListView resultList = $('#rso') as ListView
 
     GoogleListView googleResultList = $('#rso') as GoogleListView
