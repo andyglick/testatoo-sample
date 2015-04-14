@@ -23,8 +23,6 @@ import org.testatoo.core.property.Text
  */
 class TextMessage extends Component {
     TextMessage() {
-        support Text, {
-            Component c -> c.evaluator.getString("\$('#${id}').text()")
-        }
+        support Text
     }
 }

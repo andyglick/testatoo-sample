@@ -27,12 +27,6 @@ import presentation.component.property.Slides
 class Presentation extends Component {
 
     Presentation() {
-        support Title, {
-            evaluator.getString("\$('#${id}').find('h1').text()")
-        }
-        support Size, {
-            Component c -> Integer.valueOf(c.evaluator.getString("\$('#${id}').find('section').length"))
-        }
-        support Slides, Author, Company
+        support Title, Size, Slides, Author, Company
     }
 }

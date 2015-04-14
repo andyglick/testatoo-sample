@@ -29,8 +29,7 @@ import polymerjs.component.TabPanel
 import static org.testatoo.core.Testatoo.*
 import static org.testatoo.core.input.Mouse.clickOn
 import static org.testatoo.core.property.Properties.title
-import static org.testatoo.core.state.States.getSelected
-import static org.testatoo.core.state.States.getUnSelected
+import static org.testatoo.core.state.States.*
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
@@ -59,14 +58,14 @@ class PolymerComponentsTest {
 
         clickOn tab_panel.tabs[1]
 
-        tab_panel.tabs[0].should { be unSelected }
+        tab_panel.tabs[0].should { be unselected }
         tab_panel.tabs[1].should { be selected }
-        tab_panel.tabs[2].should { be unSelected }
+        tab_panel.tabs[2].should { be unselected }
 
         clickOn tab_panel.tabs[2]
 
-        tab_panel.tabs[0].should { be unSelected }
-        tab_panel.tabs[1].should { be unSelected }
+        tab_panel.tabs[0].should { be unselected }
+        tab_panel.tabs[1].should { be unselected }
         tab_panel.tabs[2].should { be selected }
     }
 }

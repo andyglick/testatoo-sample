@@ -22,11 +22,11 @@ import org.testatoo.core.component.list.ListView
 import starter.component.GoogleListView
 
 /**
- * Created by david on 07/05/14.
+ * @author David Avenante (d.avenante@gmail.com)
  */
 class Factory extends Testatoo {
-    TextField searchField = $('#gbqfq') as TextField
-    Button searchButton = $('#gbqfba') as Button
+    TextField searchField = $('#lst-ib') as TextField
+    Button searchButton = $('#sblsbb button') as Button
     ListView resultList = $('#rso') as ListView
 
     GoogleListView googleResultList = $('#rso') as GoogleListView

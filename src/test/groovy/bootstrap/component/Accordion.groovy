@@ -19,7 +19,7 @@ import org.testatoo.core.component.Component
 import org.testatoo.core.component.Panel
 import org.testatoo.core.property.*
 import org.testatoo.core.state.Selected
-import org.testatoo.core.state.UnSelected
+import org.testatoo.core.state.Unselected
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
@@ -27,9 +27,7 @@ import org.testatoo.core.state.UnSelected
 class Accordion extends Component {
 
     Accordion() {
-        support Size, {
-            Component c -> Integer.valueOf(c.evaluator.getString("\$('#${id} .panel-heading a').length"))
-        }
+        support Size
         support Items, {
             Component c -> c.evaluator.getMetaInfo("\$('#${id} .panel-heading a')").collect { it as Item }
         }
@@ -40,17 +38,14 @@ class Accordion extends Component {
     }
 
     private class Item extends Component {
-
         Item() {
-            support Title, {
-                Component c -> c.evaluator.getString("\$('#${id}').text()").trim()
-            }
-            support Selected, {
-                Component c ->  Boolean.valueOf(c.evaluator.getString("\$('#${panel.id}').hasClass('in')"))
-            }
-            support UnSelected, {
-                Component c ->  !Boolean.valueOf(c.evaluator.getString("\$('#${panel.id}').hasClass('in')"))
-            }
+            support Title, Selected, Unselected
+//            support Selected, {
+//                Component c ->  Boolean.valueOf(c.evaluator.getString("\$('#${panel.id}').hasClass('in')"))
+//            }
+//            support Unselected, {
+//                Component c ->  !Boolean.valueOf(c.evaluator.getString("\$('#${panel.id}').hasClass('in')"))
+//            }
         }
 
         Panel getPanel() {

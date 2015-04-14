@@ -26,7 +26,7 @@ import org.testatoo.core.property.matcher.EqualsToMatcher
 class Company extends Property {
 
     Company() {
-        evaluator { Component c -> c.evaluator.getString("\$('[data-role=company]').text()") }
+        evaluator { Component c -> c.evaluator.getProperty(this, c) }
     }
 
     @Delegate

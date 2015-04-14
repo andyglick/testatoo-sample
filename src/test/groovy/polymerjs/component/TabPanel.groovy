@@ -20,7 +20,7 @@ import org.testatoo.core.component.Component
 import org.testatoo.core.property.Size
 import org.testatoo.core.property.Title
 import org.testatoo.core.state.Selected
-import org.testatoo.core.state.UnSelected
+import org.testatoo.core.state.Unselected
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
@@ -48,7 +48,7 @@ class TabPanel extends Component {
             support Selected, {
                 Component c ->  Boolean.valueOf(c.evaluator.getString("\$('#${id}').hasClass('core-selected')"))
             }
-            support UnSelected, {
+            support Unselected, {
                 Component c ->  !Boolean.valueOf(c.evaluator.getString("\$('#${id}').hasClass('core-selected')"))
             }
         }

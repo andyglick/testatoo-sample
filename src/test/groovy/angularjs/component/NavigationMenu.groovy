@@ -21,7 +21,7 @@ import org.testatoo.core.property.Items
 import org.testatoo.core.property.Size
 import org.testatoo.core.property.Title
 import org.testatoo.core.state.Selected
-import org.testatoo.core.state.UnSelected
+import org.testatoo.core.state.Unselected
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
@@ -29,13 +29,8 @@ import org.testatoo.core.state.UnSelected
 class NavigationMenu extends Component {
 
     NavigationMenu() {
-        support Size, {
-            Component c -> Integer.valueOf(c.evaluator.getString("\$('#${id}').find('a').length"))
-        }
-
-        support Items, {
-            Component c -> c.evaluator.getMetaInfo("\$('#${id}').find('a')").collect { it as Item }
-        }
+        support Size
+        support Items, { Component c -> c.evaluator.getMetaInfo("\$('#${id}').find('a')").collect { it as Item } }
     }
 
     List<Item> getItems() {
@@ -43,20 +38,9 @@ class NavigationMenu extends Component {
     }
 
     private class Item extends Link {
-
         Item() {
-            support Title, {
-                Component c -> c.evaluator.getString("\$('#${id}').text()").trim()
-            }
-            support Selected, {
-                Component c ->  Boolean.valueOf(c.evaluator.getString("\$('#${id}').attr('class') === \$('#${id}').closest('nav').attr('class')"))
-            }
-            support UnSelected, {
-                Component c ->  Boolean.valueOf(c.evaluator.getString("\$('#${id}').attr('class') !== \$('#${id}').closest('nav').attr('class')"))
-            }
+            support Title, Selected,Unselected
         }
     }
-
 }
 
-//$('.home').attr('class') === $('.home').parent().attr('class')

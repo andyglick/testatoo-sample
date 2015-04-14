@@ -27,7 +27,7 @@ import org.testatoo.core.property.matcher.EqualsToMatcher
 class Author extends Property {
 
     Author() {
-        evaluator { Component c -> c.evaluator.getString("\$('[data-role=author]').text()") }
+        evaluator { Component c -> c.evaluator.getProperty(this, c) }
     }
 
     @Delegate

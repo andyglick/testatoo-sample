@@ -33,9 +33,9 @@ import static org.testatoo.core.state.States.*
 import static starter.component.property.Properties.*
 
 /**
- * @author davenante
+ * @author David Avenante (d.avenante@gmail.com)
  */
-@Ignore // TODO Ignore until FF issue on new driver is fixed.
+@Ignore // TODO remove when FF issue on new driver is fixed => https://code.google.com/p/selenium/issues/detail?id=7937
 @RunWith(JUnit4)
 class AdvancedGoogleTest {
 

@@ -27,13 +27,13 @@ import org.testatoo.core.evaluator.webdriver.WebDriverEvaluator
 
 import static org.testatoo.core.Testatoo.*
 import static org.testatoo.core.input.Mouse.*
-import static org.testatoo.core.input.Keyboard.*
 import static org.testatoo.core.property.Properties.*
 import static org.testatoo.core.state.States.*
+
 /**
- * @author davenante
+ * @author David Avenante (d.avenante@gmail.com)
  */
-@Ignore // TODO Ignore until FF issue on new driver is fixed.
+@Ignore // TODO remove when FF issue on new driver is fixed => https://code.google.com/p/selenium/issues/detail?id=7937
 @RunWith(JUnit4)
 class BaseGoogleTest {
 

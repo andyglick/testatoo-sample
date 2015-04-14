@@ -20,15 +20,15 @@ import org.testatoo.core.component.*
 import org.testatoo.core.property.*
 import org.testatoo.core.state.*
 
+import static org.testatoo.core.state.States.getUnselected
+
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
 class TabPanel extends Component {
 
     TabPanel() {
-        support Size, {
-            Component c -> Integer.valueOf(c.evaluator.getString("\$('#${id}').find('a').length"))
-        }
+        support Size
         support Tabs, {
             Component c -> c.evaluator.getMetaInfo("\$('#${id}').find('a')").collect { it as Tab }
         }
@@ -40,15 +40,7 @@ class TabPanel extends Component {
 
     private class Tab extends Component {
         Tab() {
-            support Title, {
-                Component c -> c.evaluator.getString("\$('#${id}').text()")
-            }
-            support Selected, {
-                Component c ->  Boolean.valueOf(c.evaluator.getString("\$('#${id}').closest('li').hasClass('active')"))
-            }
-            support UnSelected, {
-                Component c ->  !Boolean.valueOf(c.evaluator.getString("\$('#${id}').closest('li').hasClass('active')"))
-            }
+            support Title, Selected, Unselected
         }
 
         Panel getPanel() {

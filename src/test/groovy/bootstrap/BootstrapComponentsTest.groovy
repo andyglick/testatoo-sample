@@ -82,13 +82,13 @@ class BootstrapComponentsTest {
         waitUntil { tab_panel.tabs[0].panel.be(hidden) }
         tab_panel.tabs[1].panel.should { be visible }
 
-        tab_panel.tabs[0].should { be unSelected }
+        tab_panel.tabs[0].should { be unselected }
         tab_panel.tabs[1].should { be selected }
 
         clickOn tab_panel.tabs[0]
 
         tab_panel.tabs[0].should { be selected }
-        tab_panel.tabs[1].should { be unSelected }
+        tab_panel.tabs[1].should { be unselected }
     }
 
     @Test
@@ -105,17 +105,17 @@ class BootstrapComponentsTest {
         accordion.items[2].panel.should { be hidden }
 
         accordion.items[0].should { be selected }
-        accordion.items[1].should { be unSelected }
-        accordion.items[2].should { be unSelected }
+        accordion.items[1].should { be unselected }
+        accordion.items[2].should { be unselected }
 
         clickOn accordion.items[1]
         waitUntil { accordion.items[1].be(selected) }
-        accordion.items[0].should { be unSelected }
-        accordion.items[2].should { be unSelected }
+        accordion.items[0].should { be unselected }
+        accordion.items[2].should { be unselected }
 
         clickOn accordion.items[2]
         waitUntil { accordion.items[2].is(selected) }
-        accordion.items[0].should { be unSelected }
-        accordion.items[1].should { be unSelected }
+        accordion.items[0].should { be unselected }
+        accordion.items[1].should { be unselected }
     }
 }

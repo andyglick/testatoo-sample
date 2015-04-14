@@ -21,7 +21,7 @@ import org.testatoo.core.property.matcher.ContainingMatcher
 import org.testatoo.core.property.matcher.EqualsToMatcher
 
 /**
- * Created by david on 07/05/14.
+ * @author David Avenante (d.avenante@gmail.com)
  */
 class Url extends Property {
 

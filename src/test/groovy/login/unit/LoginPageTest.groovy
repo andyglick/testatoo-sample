@@ -55,7 +55,6 @@ class LoginPageTest {
             be visible and have(title('Login Form'))
         }
 
-
         login_panel.should {
             contain(
                 email_field,
@@ -79,5 +78,4 @@ class LoginPageTest {
             be visible and have(text('Login'))
         }
     }
-
 }

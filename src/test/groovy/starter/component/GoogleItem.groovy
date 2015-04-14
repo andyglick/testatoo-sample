@@ -21,7 +21,7 @@ import starter.component.property.Description
 import starter.component.property.Url
 
 /**
- * Created by david on 07/05/14.
+ * @author David Avenante (d.avenante@gmail.com)
  */
 class GoogleItem extends Component {
 

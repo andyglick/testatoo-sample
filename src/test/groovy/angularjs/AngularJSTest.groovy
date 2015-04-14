@@ -59,21 +59,21 @@ class AngularJSTest {
         navigationMenu.items[2].should { have title('Services') }
         navigationMenu.items[3].should { have title('Contact') }
 
-        navigationMenu.items[0].should { be unSelected }
-        navigationMenu.items[1].should { be unSelected }
-        navigationMenu.items[2].should { be unSelected }
-        navigationMenu.items[3].should { be unSelected }
+        navigationMenu.items[0].should { be unselected }
+        navigationMenu.items[1].should { be unselected }
+        navigationMenu.items[2].should { be unselected }
+        navigationMenu.items[3].should { be unselected }
 
         clickOn(navigationMenu.items[0])
         navigationMenu.items[0].should { be selected }
-        navigationMenu.items[1].should { be unSelected }
-        navigationMenu.items[2].should { be unSelected }
-        navigationMenu.items[3].should { be unSelected }
+        navigationMenu.items[1].should { be unselected }
+        navigationMenu.items[2].should { be unselected }
+        navigationMenu.items[3].should { be unselected }
 
         clickOn(navigationMenu.items[1])
-        navigationMenu.items[0].should { be unSelected }
+        navigationMenu.items[0].should { be unselected }
         navigationMenu.items[1].should { be selected }
-        navigationMenu.items[2].should { be unSelected }
-        navigationMenu.items[3].should { be unSelected }
+        navigationMenu.items[2].should { be unselected }
+        navigationMenu.items[3].should { be unselected }
     }
 }

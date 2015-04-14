@@ -22,7 +22,7 @@ import org.testatoo.core.property.Items
 import org.testatoo.core.property.Size
 
 /**
- * Created by david on 07/05/14.
+ * @author David Avenante (d.avenante@gmail.com)
  */
 class GoogleListView extends ListView {
 
