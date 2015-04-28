@@ -15,17 +15,22 @@
  */
 (function (w) {
 
-    w.testatoo.registerCartridge(
-        {
-            name: 'starter',
-            type: function(el) {
-                if (el.is('li') && el.hasClass('g'))
-                    return 'GoogleItem';
-                return undefined;
-            },
-            states: {},
-            properties: {}
+    var cartridge = {
+        name: 'starter',
+        components: []
+    };
+
+    var $ = w.testatoo;
+    var html5 = $.getCartridge('html5').support;
+
+    $.registerCartridge(cartridge);
+
+    cartridge.components.push($.support([html5.base], {
+        type: 'GoogleItem',
+        match: function(el) { return el.is('li') && el.hasClass('g'); },
+        title: function(el) {
+            return  el.find('h3:first a').text().trim();
         }
-    );
+    }));
 
 }(window));

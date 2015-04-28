@@ -26,9 +26,6 @@ import starter.component.property.Url
 class GoogleItem extends Component {
 
     GoogleItem() {
-        support Title, {
-            Component c -> c.evaluator.getString("\$('#${id} h3').text()")
-        }
-        support Url, Description
+        support Title, Url, Description
     }
 }

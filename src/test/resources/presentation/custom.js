@@ -21,11 +21,8 @@
   };
 
   var $ = w.testatoo;
-
-  var base = {
-    visible: function(el) {
-      return el.is(':visible');
-    },
+  var html5 = $.getCartridge('html5').support;
+  var text = {
     text: function(el) {
       return el.text().trim();
     }
@@ -33,11 +30,9 @@
 
   $.registerCartridge(cartridge);
 
-  cartridge.components.push($.extend({}, base, {
+  cartridge.components.push($.support([html5.base], {
     type: 'Presentation',
-    match: function(el) {
-      return el.data('role') == 'slides';
-    },
+    match: function(el) { return el.data('role') == 'slides'; },
     title: function(el) {
       return el.find('h1').text().trim();
     },
@@ -50,27 +45,21 @@
     company: function(el) {
       return el.find('[data-role=company]').text().trim();
     }
-
   }));
 
-  cartridge.components.push($.extend({}, base, {
+  cartridge.components.push($.support([html5.base, text], {
     type: 'Conclusion',
-    match: function(el) {
-      return el.attr('data-type') == 'conclusion';
-    }
+    match: function(el) { return el.attr('data-type') == 'conclusion'; }
   }));
 
-  cartridge.components.push($.extend({}, base, {
+  cartridge.components.push($.support([html5.base, text], {
     type: 'Teaser',
-    match: function(el) {
-      return el.attr('data-type') == 'teaser';
-    }
+    match: function(el) { return el.attr('data-type') == 'teaser'; }
   }));
 
-  cartridge.components.push($.extend({}, base, {
+  cartridge.components.push($.support([html5.base, text], {
     type: 'TextMessage',
-    match: function(el) {
-      return el.attr('data-type') == 'text-message';
-    }
+    match: function(el) { return el.attr('data-type') == 'text-message'; }
   }));
+
 }(window));

@@ -13,92 +13,68 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-(function (w) {
+(function(w) {
 
-    var cartridge = {
-        name: 'bootstrap',
-        components: []
-    };
+  var cartridge = {
+    name: 'bootstrap',
+    components: []
+  };
 
-    var $ = w.testatoo;
+  var $ = w.testatoo;
+  var html5 = $.getCartridge('html5').support;
 
-    var base = {
-        hidden: function(el) {
-            return el.is(':hidden');
-        },
-        visible: function(id) {
-            return !this.hidden(id);
-        },
-        enabled: function(el) {
-            return !this.disabled(el);
-        },
-        disabled: function(el) {
-            return el.is(':disabled') || el.attr('disabled') != undefined;
-        },
-        contains: function(el, ids) {
-            var not = [];
-            $.each(ids, function(index, _id) {
-                !$.contains(el[0], $('#' + _id)[0]) && not.push(_id);
-            });
-            return not;
-        },
-        display: function(el, ids) {
-            return this.contains(el, ids);
-        }
-    };
+  $.registerCartridge(cartridge);
 
-    $.registerCartridge(cartridge);
+  cartridge.components.push($.support([html5.base], {
+    type: 'ProgressBar',
+    match: function(el) { return el.attr('role') == 'progressbar'; },
+    value: function(el) {
+      return document.getElementById(el.attr('id')).style.width
+    }
+  }));
 
-    cartridge.components.push($.extend({}, base, {
-        type: 'ProgressBar',
-        match: function(el) { return el.attr('role') == 'progressbar'; },
-        value: function(el) {
-            return document.getElementById(el.attr('id')).style.width
-        }
-    }));
+  cartridge.components.push($.support([html5.base], {
+    type: 'TabPanel',
+    match: function(el) { return el.hasClass('nav-tabs'); },
+    size: function(el) {
+      return el.find('a').length;
+    }
+  }));
 
-    cartridge.components.push($.extend({}, base, {
-        type: 'TabPanel',
-        match: function(el) { return el.hasClass('nav-tabs'); },
-        size: function(el) {
-            return el.find('a').length;
-        }
-    }));
+  cartridge.components.push($.support([html5.base], {
+    type: 'Tab',
+    match: function(el) { return el.is('a') && el.closest('ul').hasClass('nav-tabs'); },
+    title: function(el) {
+      return el.text().trim();
+    },
+    selected: function(el) {
+      return el.closest('li').hasClass('active');
+    },
+    unselected: function(el) {
+      return !this.selected(el);
+    }
+  }));
 
-    cartridge.components.push($.extend({}, base, {
-        type: 'Tab',
-        match: function(el) { return el.is('a') && el.closest('ul').hasClass('nav-tabs'); },
-        title: function(el) {
-            return el.text().trim();
-        },
-        selected: function(el) {
-            return el.closest('li').hasClass('active');
-        },
-        unselected: function(el) {
-            return !this.selected(el);
-        }
-    }));
+  cartridge.components.push($.support([html5.base], {
+    type: 'Accordion',
+    match: function(el) { return el.hasClass('panel-group'); },
+    size: function(el) {
+      return el.find('.panel-heading a').length;
+    }
+  }));
 
-    cartridge.components.push($.extend({}, base, {
-        type: 'Accordion',
-        match: function(el) { return el.hasClass('panel-group'); },
-        size: function(el) {
-            return el.find('.panel-heading a').length;
-        }
-    }));
-
-    cartridge.components.push($.extend({}, base, {
-        type: 'Item',
-        match: function(el) { return el.is('a') && el.closest('div').hasClass('panel-heading'); },
-        title: function(el) {
-            return el.text().trim();
-        },
-        selected: function(el) {
-            return $('#' + el.attr('href').substring(1)).hasClass('in');
-        },
-        unselected: function(el) {
-            return !this.selected(el);
-        }
-    }));
+  cartridge.components.push($.support([html5.base], {
+    type: 'Item',
+    match: function(el) { return el.is('a') && el.closest('div').hasClass('panel-heading'); },
+    title: function(el) {
+      return el.text().trim();
+    },
+    selected: function(el) {
+      return $('#' + el.attr('href').substring(1)).hasClass('in');
+    },
+    unselected: function(el) {
+      return !this.selected(el);
+    }
+  }));
 
 }(window));

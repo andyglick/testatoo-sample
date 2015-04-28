@@ -15,19 +15,24 @@
  */
 (function (w) {
 
-    w.testatoo.registerCartridge(
-        {
-            name: 'polymerjs',
-            type: function(el) {
-                if (el.attr('role') == 'tablist')
-                    return 'TabPanel';
-                if (el.is('paper-tab'))
-                    return 'Tab';
-                return undefined;
-            },
-            states: {},
-            properties: {}
-        }
-    );
+    var cartridge = {
+        name: 'polymerjs',
+        components: []
+    };
+
+    var $ = w.testatoo;
+    var html5 = $.getCartridge('html5').support;
+
+    $.registerCartridge(cartridge);
+
+    cartridge.components.push($.support([html5.base], {
+        type: 'TabPanel',
+        match: function(el) { return el.attr('role') === 'tablist'; }
+    }));
+
+    cartridge.components.push($.support([html5.base], {
+        type: 'Tab',
+        match: function(el) { return el.is('paper-tab'); }
+    }));
 
 }(window));

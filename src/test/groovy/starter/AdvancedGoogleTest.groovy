@@ -35,7 +35,6 @@ import static starter.component.property.Properties.*
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
-@Ignore // TODO remove when FF issue on new driver is fixed => https://code.google.com/p/selenium/issues/detail?id=7937
 @RunWith(JUnit4)
 class AdvancedGoogleTest {
 
@@ -65,7 +64,7 @@ class AdvancedGoogleTest {
 
         GoogleItem item = googleResultList.items[0];
         item.should {
-            have title('Testatoo documentation')
+            have title('Testatoo')
             have url.containing('www.testatoo.org')
             have description.containing('Testatoo is the result of numerous real-world observations of developers')
         }
