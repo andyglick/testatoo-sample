@@ -17,6 +17,7 @@ package polymerjs
 
 import org.junit.AfterClass
 import org.junit.BeforeClass
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -33,6 +34,7 @@ import static org.testatoo.core.state.States.*
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
+@Ignore
 @RunWith(JUnit4)
 class PolymerComponentsTest {
 

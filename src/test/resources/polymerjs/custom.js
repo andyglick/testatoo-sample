@@ -13,26 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-(function (w) {
+(function(w) {
 
-    var cartridge = {
-        name: 'polymerjs',
-        components: []
-    };
+  var cartridge = {
+    name: 'polymerjs',
+    components: []
+  };
 
-    var $ = w.testatoo;
-    var html5 = $.getCartridge('html5').support;
+  var $ = w.testatoo;
+  var html5 = $.getCartridge('html5').support;
 
-    $.registerCartridge(cartridge);
+  $.registerCartridge(cartridge);
 
-    cartridge.components.push($.support([html5.base], {
-        type: 'TabPanel',
-        match: function(el) { return el.attr('role') === 'tablist'; }
-    }));
+  cartridge.components.push($.support([html5.base], {
+    type: 'TabPanel',
+    match: function(el) { return el.attr('role') === 'tablist'; }
+  }));
 
-    cartridge.components.push($.support([html5.base], {
-        type: 'Tab',
-        match: function(el) { return el.is('paper-tab'); }
-    }));
+  cartridge.components.push($.support([html5.base], {
+    type: 'Tab',
+    match: function(el) { return el.is('paper-tab'); }
+  }));
 
 }(window));

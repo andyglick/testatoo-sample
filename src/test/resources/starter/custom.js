@@ -13,24 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-(function (w) {
+(function(w) {
 
-    var cartridge = {
-        name: 'starter',
-        components: []
-    };
+  var cartridge = {
+    name: 'starter',
+    components: []
+  };
 
-    var $ = w.testatoo;
-    var html5 = $.getCartridge('html5').support;
+  var $ = w.testatoo;
+  var html5 = $.getCartridge('html5').support;
 
-    $.registerCartridge(cartridge);
+  $.registerCartridge(cartridge);
 
-    cartridge.components.push($.support([html5.base], {
-        type: 'GoogleItem',
-        match: function(el) { return el.is('li') && el.hasClass('g'); },
-        title: function(el) {
-            return  el.find('h3:first a').text().trim();
-        }
-    }));
+  cartridge.components.push($.support([html5.base], {
+    type: 'GoogleItem',
+    match: function(el) { return el.is('li') && el.hasClass('g'); },
+    title: function(el) {
+      return el.find('h3:first a').text().trim();
+    }
+  }));
 
 }(window));

@@ -42,9 +42,7 @@
 
   cartridge.components.push($.support([html5.base], {
     type: 'NavigationMenu',
-    match: function(el) {
-      return el.is('nav')
-    },
+    match: function(el) { return el.is('nav') },
     size: function(el) {
       return el.find('a').length;
     }
@@ -52,9 +50,7 @@
 
   cartridge.components.push($.support([html5.base], {
     type: 'Item',
-    match: function(el) {
-      return el.is('a') && el.parent().is('nav')
-    },
+    match: function(el) { return el.is('a') && el.parent().is('nav') },
     title: function(el) {
       return el.text().trim();
     },
