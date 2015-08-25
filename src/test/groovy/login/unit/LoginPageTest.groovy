@@ -26,9 +26,9 @@ import org.testatoo.core.Testatoo
 import org.testatoo.core.evaluator.webdriver.WebDriverEvaluator
 
 import static org.testatoo.core.Testatoo.*
+import static org.testatoo.core.state.States.*
 import static org.testatoo.core.property.Properties.*
-import static org.testatoo.core.state.States.getVisible
-import static org.testatoo.core.state.States.visible
+import static org.testatoo.core.action.Actions.*
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
@@ -42,7 +42,7 @@ class LoginPageTest {
     @BeforeClass
     public static void setup() {
         Testatoo.evaluator = new WebDriverEvaluator(new FirefoxDriver())
-        open 'http://localhost:8080/login/index.html'
+        visit 'http://localhost:8080/login/index.html'
         factory = new Factory()
     }
 

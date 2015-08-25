@@ -22,14 +22,15 @@ import org.junit.*
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.openqa.selenium.firefox.FirefoxDriver
+import org.testatoo.bundle.html5.Button
 import org.testatoo.core.Testatoo
-import org.testatoo.core.component.Button
 import org.testatoo.core.evaluator.webdriver.WebDriverEvaluator
 
 import static org.testatoo.core.Testatoo.*
 import static org.testatoo.core.input.Mouse.*
-import static org.testatoo.core.property.Properties.*
 import static org.testatoo.core.state.States.*
+import static org.testatoo.core.property.Properties.*
+import static org.testatoo.core.action.Actions.*
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
@@ -40,7 +41,6 @@ class BootstrapComponentsTest {
     @BeforeClass
     public static void setup() {
         Testatoo.evaluator = new WebDriverEvaluator(new FirefoxDriver())
-        evaluator.registerScripts(this.getClass().getResourceAsStream('/bootstrap/custom.js').text)
         open 'http://localhost:8080/bootstrap/index.html'
     }
 
@@ -55,14 +55,14 @@ class BootstrapComponentsTest {
 
         progress_bar.should { have value('60%') }
 
-        clickOn plus
-        clickOn plus
+        click_on plus
+        click_on plus
         progress_bar.should { have value('80%') }
 
-        clickOn minus
-        clickOn minus
-        clickOn minus
-        clickOn minus
+        click_on minus
+        click_on minus
+        click_on minus
+        click_on minus
         progress_bar.should { have value('40%') }
     }
 
@@ -77,7 +77,7 @@ class BootstrapComponentsTest {
         tab_panel.tabs[0].panel.should { be visible }
         tab_panel.tabs[1].panel.should { be hidden }
 
-        clickOn tab_panel.tabs[1]
+        click_on tab_panel.tabs[1]
 
         waitUntil { tab_panel.tabs[0].panel.be(hidden) }
         tab_panel.tabs[1].panel.should { be visible }
@@ -85,7 +85,7 @@ class BootstrapComponentsTest {
         tab_panel.tabs[0].should { be unselected }
         tab_panel.tabs[1].should { be selected }
 
-        clickOn tab_panel.tabs[0]
+        click_on tab_panel.tabs[0]
 
         tab_panel.tabs[0].should { be selected }
         tab_panel.tabs[1].should { be unselected }
@@ -108,12 +108,12 @@ class BootstrapComponentsTest {
         accordion.items[1].should { be unselected }
         accordion.items[2].should { be unselected }
 
-        clickOn accordion.items[1]
+        click_on accordion.items[1]
         waitUntil { accordion.items[1].be(selected) }
         accordion.items[0].should { be unselected }
         accordion.items[2].should { be unselected }
 
-        clickOn accordion.items[2]
+        click_on accordion.items[2]
         waitUntil { accordion.items[2].is(selected) }
         accordion.items[0].should { be unselected }
         accordion.items[1].should { be unselected }

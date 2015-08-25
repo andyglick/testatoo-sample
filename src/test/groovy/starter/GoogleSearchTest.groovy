@@ -17,36 +17,38 @@ package starter
 
 import org.junit.AfterClass
 import org.junit.BeforeClass
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.openqa.selenium.firefox.FirefoxDriver
+import org.testatoo.bundle.html5.Button
+import org.testatoo.bundle.html5.input.TextField
 import org.testatoo.core.Testatoo
 import org.testatoo.core.evaluator.webdriver.WebDriverEvaluator
 import starter.component.GoogleItem
+import starter.component.GoogleListView
 
 import static org.testatoo.core.Testatoo.*
-import static org.testatoo.core.input.Mouse.*
-import static org.testatoo.core.property.Properties.title
-import static org.testatoo.core.state.States.*
 import static starter.component.property.Properties.*
+import static org.testatoo.core.state.States.*
+import static org.testatoo.core.action.Actions.*
+import static org.testatoo.core.input.Mouse.*
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
 @RunWith(JUnit4)
-class AdvancedGoogleTest {
+class GoogleSearchTest {
 
-    @Delegate
-    private static Factory factory
+    static TextField searchField
+    static Button searchButton
+    static GoogleListView resultList
 
     @BeforeClass
     public static void setup() {
         Testatoo.evaluator = new WebDriverEvaluator(new FirefoxDriver())
-        evaluator.registerScripts(this.getClass().getResourceAsStream('/starter/custom.js').text)
-        open 'http://www.google.ca'
-        factory = new Factory()
+        visit 'http://www.google.ca'
+        init()
     }
 
     @AfterClass
@@ -57,16 +59,22 @@ class AdvancedGoogleTest {
         resultList.should { be missing }
         searchField.should { be visible }
 
-        on searchField enter 'Testatoo'
-        clickOn searchButton
+        fill searchField with 'groovy'
+        click_on searchButton
 
-        waitUntil { googleResultList.is visible }
+        waitUntil { resultList.is visible }
 
-        GoogleItem item = googleResultList.items[0];
+        GoogleItem item = resultList.items[1];
         item.should {
-            have title('Testatoo')
-            have url.containing('www.testatoo.org')
-            have description.containing('Testatoo is the result of numerous real-world observations of developers')
+            have title.containing('The Groovy programming language')
+            have url.containing('www.groovy-lang.org')
+            have description.containing('Groovy is a powerful, optionally typed and dynamic language')
         }
+    }
+
+    private static void init() {
+        searchField = $('#lst-ib') as TextField
+        searchButton = $('#sblsbb button') as Button
+        resultList = $('#rso') as GoogleListView
     }
 }

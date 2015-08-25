@@ -15,8 +15,7 @@
  */
 package presentation.component.property
 
-import org.testatoo.core.component.Component
-import org.testatoo.core.component.Section
+import org.testatoo.bundle.html5.Section
 import org.testatoo.core.property.Property
 import org.testatoo.core.property.matcher.EqualsToListMatcher
 
@@ -26,7 +25,7 @@ import org.testatoo.core.property.matcher.EqualsToListMatcher
 class Slides extends Property {
 
     Slides() {
-        evaluator { Component c -> c.evaluator.getMetaInfo("\$('#${id}').find('section')").collect { it as Section } }
+        evaluator { it.find('section', Section) }
     }
 
     @Delegate

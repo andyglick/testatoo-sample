@@ -15,8 +15,10 @@
  */
 package presentation.component
 
-import org.testatoo.core.component.*
-import org.testatoo.core.property.*
+import org.testatoo.core.ByJs
+import org.testatoo.core.Component
+import org.testatoo.core.property.Size
+import org.testatoo.core.property.Title
 import presentation.component.property.Author
 import presentation.component.property.Company
 import presentation.component.property.Slides
@@ -24,9 +26,12 @@ import presentation.component.property.Slides
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
+@ByJs("it.data('role') == 'slides'")
 class Presentation extends Component {
 
     Presentation() {
-        support Title, Size, Slides, Author, Company
+        support Title, { eval("it.find('h1').text()") }
+        support Size, { eval("it.find('section').length") as int }
+        support Slides, Author, Company
     }
 }

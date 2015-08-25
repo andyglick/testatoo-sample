@@ -16,35 +16,37 @@
 package bootstrap.component
 
 import bootstrap.component.property.Tabs
-import org.testatoo.core.component.*
+import org.testatoo.bundle.html5.Panel
+import org.testatoo.core.ByJs
+import org.testatoo.core.Component
 import org.testatoo.core.property.*
 import org.testatoo.core.state.*
-
-import static org.testatoo.core.state.States.getUnselected
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
+@ByJs("it.hasClass('nav-tabs')")
 class TabPanel extends Component {
 
     TabPanel() {
-        support Size
-        support Tabs, {
-            Component c -> c.evaluator.getMetaInfo("\$('#${id}').find('a')").collect { it as Tab }
-        }
+        support Size, { eval("it.find('a').length") as int }
+        support Tabs
     }
 
     List<Tab> getTabs() {
-        this.evaluator.getMetaInfo("\$('#${id}').find('a')").collect { it as Tab }
+        find('a', Tab)
     }
 
+    @ByJs("it.is('a') && it.closest('ul').hasClass('nav-tabs')")
     private class Tab extends Component {
         Tab() {
-            support Title, Selected, Unselected
+            support Title, { eval('it.text().trim()') }
+            support Selected, { it.check("it.closest('li').hasClass('active')") }
+            support Unselected, { !it.check("it.closest('li').hasClass('active')") }
         }
 
         Panel getPanel() {
-            return $('#' + this.evaluator.getString("\$('#${id}').attr('href').substring(1)")) as Panel
+            $('#' + eval("it.attr('href').substring(1)")) as Panel
         }
     }
 }

@@ -15,9 +15,7 @@
  */
 package starter.component
 
-import org.testatoo.core.component.Component
-import org.testatoo.core.component.list.Item
-import org.testatoo.core.component.list.ListView
+import org.testatoo.bundle.html5.list.ListView
 import org.testatoo.core.property.Items
 import org.testatoo.core.property.Size
 
@@ -27,15 +25,11 @@ import org.testatoo.core.property.Size
 class GoogleListView extends ListView {
 
     GoogleListView() {
-        support Size, {
-            Component c -> Integer.valueOf(c.evaluator.getString("\$('#${id}').find('li').length"))
-        }
-        support Items, {
-            Component c -> c.evaluator.getMetaInfo("\$('#${id}').find('li')").collect { it as Item }
-        }
+        support Size, { eval("it.find('div.rc').length") as int }
+        support Items, { find('div.rc', GoogleItem) }
     }
 
     List<GoogleItem> getItems() {
-        this.evaluator.getMetaInfo("\$('#${id}').find('li')").collect { it as GoogleItem }
+        find('div.rc', GoogleItem)
     }
 }

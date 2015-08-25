@@ -15,13 +15,13 @@
  */
 package login
 
+import org.testatoo.bundle.html5.Button
+import org.testatoo.bundle.html5.Heading
+import org.testatoo.bundle.html5.Panel
+import org.testatoo.bundle.html5.input.EmailField
+import org.testatoo.bundle.html5.input.PasswordField
+import org.testatoo.core.Component
 import org.testatoo.core.Testatoo
-import org.testatoo.core.component.Button
-import org.testatoo.core.component.Component
-import org.testatoo.core.component.Heading
-import org.testatoo.core.component.input.EmailField
-import org.testatoo.core.component.Panel
-import org.testatoo.core.component.input.PasswordField
 import org.testatoo.core.property.Title
 
 /**
@@ -38,7 +38,7 @@ class Factory extends Testatoo {
 
     class LoginPanel extends Panel {
         LoginPanel() {
-            support Title, {Component c -> c.evaluator.getString("\$('#${c.id} h1').text()") }
+            support Title, { eval("it.find('h1').text()") }
         }
     }
 }

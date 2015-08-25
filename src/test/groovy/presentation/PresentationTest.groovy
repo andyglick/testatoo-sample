@@ -23,9 +23,9 @@ import org.testatoo.core.Testatoo
 import org.testatoo.core.evaluator.webdriver.WebDriverEvaluator
 
 import static org.testatoo.core.Testatoo.*
-import static org.testatoo.core.property.Properties.*
-import static org.testatoo.core.state.States.*
 import static presentation.component.property.Properties.*
+import static org.testatoo.core.state.States.*
+import static org.testatoo.core.action.Actions.*
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
@@ -39,7 +39,6 @@ class PresentationTest {
     @BeforeClass
     public static void setup() {
         Testatoo.evaluator = new WebDriverEvaluator(new FirefoxDriver())
-        evaluator.registerScripts(this.getClass().getResourceAsStream('/presentation/custom.js').text)
         open 'http://localhost:8080/presentation/index.html'
         factory = new Factory()
     }
@@ -55,7 +54,7 @@ class PresentationTest {
     @Test
     public void try_to_capture_the_audience_with_a_punching_title() {
         presentation.should { have title.containing('Functional Tests With Testatoo') }
-        // Most important Testatoo logo is here
+        // Important, Testatoo logo must be here and visible
         testatoo_logo.should { be visible }
     }
 

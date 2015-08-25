@@ -15,7 +15,8 @@
  */
 package starter.component
 
-import org.testatoo.core.component.Component
+import org.testatoo.core.ByCss
+import org.testatoo.core.Component
 import org.testatoo.core.property.Title
 import starter.component.property.Description
 import starter.component.property.Url
@@ -23,9 +24,11 @@ import starter.component.property.Url
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
+@ByCss('div.rc')
 class GoogleItem extends Component {
 
     GoogleItem() {
-        support Title, Url, Description
+        support Title, { it.eval("it.find('h3:first').text()") }
+        support Url, Description
     }
 }

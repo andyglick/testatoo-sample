@@ -15,7 +15,6 @@
  */
 package starter.component.property
 
-import org.testatoo.core.component.Component
 import org.testatoo.core.property.Property
 import org.testatoo.core.property.matcher.ContainingMatcher
 import org.testatoo.core.property.matcher.EqualsToMatcher
@@ -26,7 +25,7 @@ import org.testatoo.core.property.matcher.EqualsToMatcher
 class Description extends Property {
 
     Description() {
-        evaluator { Component c -> c.evaluator.getString("\$('#${c.id} span.st').text()") }
+        string "it.find('span.st').text()"
     }
 
     @Delegate

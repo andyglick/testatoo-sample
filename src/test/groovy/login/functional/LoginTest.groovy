@@ -26,10 +26,9 @@ import org.testatoo.core.Testatoo
 import org.testatoo.core.evaluator.webdriver.WebDriverEvaluator
 
 import static org.testatoo.core.Testatoo.*
-import static org.testatoo.core.input.Keyboard.type
-import static org.testatoo.core.input.Mouse.clickOn
-import static org.testatoo.core.state.States.getHidden
-import static org.testatoo.core.state.States.getVisible
+import static org.testatoo.core.input.Mouse.*
+import static org.testatoo.core.state.States.*
+import static org.testatoo.core.action.Actions.*
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
@@ -57,13 +56,10 @@ class LoginTest {
     public void can_login() {
         user_is_not_logged()
 
-        clickOn email_field
-        type('test@email.org')
+        fill email_field with 'test@email.org'
+        fill password_field with 'password666'
 
-        clickOn password_field
-        type('password666')
-
-        clickOn login_button
+        click_on login_button
 
         user_is_logged()
     }
@@ -72,13 +68,10 @@ class LoginTest {
     public void login_failure() {
         user_is_not_logged()
 
-        clickOn email_field
-        type('test@email.org')
+        fill email_field with 'test@email.org'
+        fill password_field with 'bad_credential'
 
-        clickOn password_field
-        type('bad_credential')
-
-        clickOn login_button
+        click_on login_button
 
         waitUntil { error_message.be(visible) }
         user_is_not_logged()

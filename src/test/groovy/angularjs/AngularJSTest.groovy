@@ -26,9 +26,10 @@ import org.testatoo.core.Testatoo
 import org.testatoo.core.evaluator.webdriver.WebDriverEvaluator
 
 import static org.testatoo.core.Testatoo.*
+import static org.testatoo.core.input.Mouse.*
 import static org.testatoo.core.state.States.*
 import static org.testatoo.core.property.Properties.*
-import static org.testatoo.core.input.Mouse.*
+import static org.testatoo.core.action.Actions.*
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
@@ -39,8 +40,7 @@ class AngularJSTest {
     @BeforeClass
     public static void setup() {
         Testatoo.evaluator =  new WebDriverEvaluator(new FirefoxDriver())
-        evaluator.registerScripts(this.getClass().getResourceAsStream('/angular/custom.js').text)
-        open 'http://localhost:8080/angularjs/index.html'
+        visit 'http://localhost:8080/angularjs/index.html'
     }
 
     @AfterClass public static void tearDown() { evaluator.close() }
@@ -64,13 +64,13 @@ class AngularJSTest {
         navigationMenu.items[2].should { be unselected }
         navigationMenu.items[3].should { be unselected }
 
-        clickOn(navigationMenu.items[0])
+        click_on navigationMenu.items[0]
         navigationMenu.items[0].should { be selected }
         navigationMenu.items[1].should { be unselected }
         navigationMenu.items[2].should { be unselected }
         navigationMenu.items[3].should { be unselected }
 
-        clickOn(navigationMenu.items[1])
+        click_on navigationMenu.items[1]
         navigationMenu.items[0].should { be unselected }
         navigationMenu.items[1].should { be selected }
         navigationMenu.items[2].should { be unselected }

@@ -15,12 +15,14 @@
  */
 package presentation.component
 
-import org.testatoo.core.component.Component
+import org.testatoo.core.ByJs
+import org.testatoo.core.Component
 import org.testatoo.core.property.Text
 
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
+@ByJs("it.attr('data-type') == 'teaser'")
 class Teaser extends Component {
     Teaser() {
         support Text

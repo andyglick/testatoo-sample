@@ -15,7 +15,6 @@
  */
 package presentation.component.property
 
-import org.testatoo.core.component.Component
 import org.testatoo.core.property.Property
 import org.testatoo.core.property.matcher.ContainingMatcher
 import org.testatoo.core.property.matcher.EqualsToMatcher
@@ -25,9 +24,7 @@ import org.testatoo.core.property.matcher.EqualsToMatcher
  */
 class Company extends Property {
 
-    Company() {
-        evaluator { Component c -> c.evaluator.getProperty(this, c) }
-    }
+    Company() { string "it.find('[data-role=company]').text()" }
 
     @Delegate
     private EqualsToMatcher.Matchers eq = EqualsToMatcher.matchers(this)

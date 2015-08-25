@@ -15,7 +15,6 @@
  */
 package starter.component.property
 
-import org.testatoo.core.component.Component
 import org.testatoo.core.property.Property
 import org.testatoo.core.property.matcher.ContainingMatcher
 import org.testatoo.core.property.matcher.EqualsToMatcher
@@ -26,7 +25,7 @@ import org.testatoo.core.property.matcher.EqualsToMatcher
 class Url extends Property {
 
     Url() {
-        evaluator { Component c -> c.evaluator.getString("\$('#${c.id} cite:first').text()") }
+        string "it.find('cite:first').text()"
     }
 
     @Delegate

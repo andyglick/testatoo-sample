@@ -20,7 +20,7 @@ import org.testatoo.core.property.matcher.PropertyMatcher
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
-class Properties {
+class Properties extends org.testatoo.core.property.Properties{
 
     static final Url url = new Url()
     static final PropertyMatcher url(String expected) { url.equalsTo(expected) }

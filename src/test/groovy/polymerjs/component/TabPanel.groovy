@@ -16,7 +16,7 @@
 package polymerjs.component
 
 import bootstrap.component.property.Tabs
-import org.testatoo.core.component.Component
+import org.testatoo.core.Component
 import org.testatoo.core.property.Size
 import org.testatoo.core.property.Title
 import org.testatoo.core.state.Selected

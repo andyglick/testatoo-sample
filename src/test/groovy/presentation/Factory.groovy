@@ -15,10 +15,10 @@
  */
 package presentation
 
+import org.testatoo.bundle.html5.Heading
+import org.testatoo.bundle.html5.Image
+import org.testatoo.bundle.html5.list.ListView
 import org.testatoo.core.Testatoo
-import org.testatoo.core.component.Heading
-import org.testatoo.core.component.Image
-import org.testatoo.core.component.list.ListView
 import presentation.component.Conclusion
 import presentation.component.Presentation
 import presentation.component.Teaser
