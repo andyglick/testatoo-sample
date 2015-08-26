@@ -27,5 +27,4 @@ class Teaser extends Component {
     Teaser() {
         support Text
     }
-
 }

@@ -23,7 +23,6 @@ import org.testatoo.core.property.matcher.EqualsToMatcher
  * @author David Avenante (d.avenante@gmail.com)
  */
 class Company extends Property {
-
     Company() { string "it.find('[data-role=company]').text()" }
 
     @Delegate

@@ -24,7 +24,6 @@ import org.testatoo.core.property.matcher.EqualsToMatcher
  * @author David Avenante (d.avenante@gmail.com)
  */
 class Author extends Property {
-
     Author() { string "it.find('[data-role=author]').text()" }
 
     @Delegate

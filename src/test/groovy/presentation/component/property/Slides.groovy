@@ -23,7 +23,6 @@ import org.testatoo.core.property.matcher.EqualsToListMatcher
  * @author David Avenante (d.avenante@gmail.com)
  */
 class Slides extends Property {
-
     Slides() {
         evaluator { it.find('section', Section) }
     }

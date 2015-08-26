@@ -20,7 +20,6 @@ import org.testatoo.bundle.html5.Heading
 import org.testatoo.bundle.html5.Panel
 import org.testatoo.bundle.html5.input.EmailField
 import org.testatoo.bundle.html5.input.PasswordField
-import org.testatoo.core.Component
 import org.testatoo.core.Testatoo
 import org.testatoo.core.property.Title
 

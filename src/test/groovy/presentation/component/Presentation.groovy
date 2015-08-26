@@ -28,7 +28,6 @@ import presentation.component.property.Slides
  */
 @ByJs("it.data('role') == 'slides'")
 class Presentation extends Component {
-
     Presentation() {
         support Title, { eval("it.find('h1').text()") }
         support Size, { eval("it.find('section').length") as int }
