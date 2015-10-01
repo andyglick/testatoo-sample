@@ -20,7 +20,7 @@ import org.testatoo.core.property.matcher.PropertyMatcher
 /**
  * @author David Avenante (d.avenante@gmail.com)
  */
-class Properties extends starter.component.property.Properties {
+class Properties extends org.testatoo.core.property.Properties {
 
     static final Author author = new Author()
     static final PropertyMatcher author(String expected) { author.equalsTo(expected) }
